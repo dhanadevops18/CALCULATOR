@@ -1,0 +1,82 @@
+
+Sure, here’s a simple HTML code for a basic calculator with a background color:
+
+HTML
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Simple Calculator</title>
+        <style>
+            body {
+                background-color: #f0f0f0; /* This is a light gray color */
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Simple Calculator</h1>
+        <input type="text" id="result" readonly>
+        <br/>
+        <button onclick="clearResult()">C</button>
+        <button onclick="appendNumber('7')">7</button>
+        <button onclick="appendNumber('8')">8</button>
+        <button onclick="appendNumber('9')">9</button>
+        <button onclick="appendOperator('/')">/</button>
+        <br/>
+        <button onclick="appendNumber('4')">4</button>
+        <button onclick="appendNumber('5')">5</button>
+        <button onclick="appendNumber('6')">6</button>
+        <button onclick="appendOperator('*')">*</button>
+        <br/>
+        <button onclick="appendNumber('1')">1</button>
+        <button onclick="appendNumber('2')">2</button>
+        <button onclick="appendNumber('3')">3</button>
+        <button onclick="appendOperator('-')">-</button>
+        <br/>
+        <button onclick="appendNumber('0')">0</button>
+        <button onclick="appendOperator('.')">.</button>
+        <button onclick="calculate()">=</button>
+        <button onclick="appendOperator('+')">+</button>
+        <script>
+            let resultField = document.getElementById('result');
+            let operator = null;
+            let operand1 = null;
+            let operand2 = null;
+
+            function appendNumber(number) {
+                resultField.value += number;
+            }
+
+            function appendOperator(op) {
+                operator = op;
+                operand1 = parseFloat(resultField.value);
+                resultField.value = '';
+            }
+
+            function calculate() {
+                operand2 = parseFloat(resultField.value);
+                switch (operator) {
+                    case '+':
+                        resultField.value = operand1 + operand2;
+                        break;
+                    case '-':
+                        resultField.value = operand1 - operand2;
+                        break;
+                    case '*':
+                        resultField.value = operand1 * operand2;
+                        break;
+                    case '/':
+                        resultField.value = operand1 / operand2;
+                        break;
+                }
+            }
+
+            function clearResult() {
+                resultField.value = '';
+                operator = null;
+                operand1 = null;
+                operand2 = null;
+            }
+        </script>
+    </body>
+</html>
