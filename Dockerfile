@@ -1,2 +1,6 @@
 FROM hshar/webapp
-ADD ./calcultor /var/www/html/calculator
+RUN apt update
+RUN apt install apache2 -y
+COPY . /var/www/html/
+ENTRYPOINT apachectl -D FOREGROUND
+
